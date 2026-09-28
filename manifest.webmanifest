@@ -1,0 +1,15 @@
+{
+  "name": "Spectrum Dojo",
+  "short_name": "Dojo",
+  "description": "CWNA lab and drill: spectrum maps, rate calculator, RF math, frame flows, quiz and glossary.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#EFEEE8",
+  "theme_color": "#0E7C86",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
