@@ -19,22 +19,23 @@ A self-contained CWNA study tool. One HTML page plus a manifest, a service worke
 
 ## Use it on your phone, iPad or another laptop
 
-**At home (same Wi-Fi):** the Home Hub in `../hub` already serves this folder at **http://MindKraftMBP.local:8080/dojo/** (or `http://10.0.0.172:8080/dojo/`). It starts at login through launchd, so nothing needs running by hand. See `../hub/README.md`.
+**Anywhere, online or offline:** **https://lorbar.github.io/spectrum-dojo/** — hosted free on GitHub Pages, HTTPS, works away from home. On iPhone or iPad open it in Safari, tap Share, then **Add to Home Screen** while online once; after that it keeps working in Airplane Mode (service workers need HTTPS to install, which is why this address is the one to install from).
 
-If the hub is not running, the standalone script serves this folder alone on port 8081 and prints the address:
+**At home (same Wi-Fi):** the Home Hub in `../hub` also serves this folder at **http://server.local:8080/dojo/** (or the Mac's current LAN IP, see `../URLS.txt`). It starts at login through launchd. See `../hub/README.md`. This copy is plain HTTP, so offline install does not work from it — use the GitHub Pages address above for that.
+
+If neither is running, the standalone script serves this folder alone on port 8081 and prints the address:
 
 ```bash
 ./serve.sh
 ```
 
-On iPhone or iPad open the address in Safari, tap Share, then **Add to Home Screen**. This gives you an icon, but over plain `http://` the browser will not install the offline cache (service workers need HTTPS). Offline use therefore needs the GitHub Pages step described in `HANDOFF.md`; once the app is at its `https://` address, install from there instead and it will keep working with no connection.
+**Publishing an update:** edit `index.html`, bump `CACHE` in `sw.js` so installed devices refresh, then from this folder:
 
-**Away from home and offline:** the app must be hosted over HTTPS. Decided plan: GitHub Pages, to be set up from the personal GitHub account (steps in `HANDOFF.md`). Other options considered:
+```bash
+git add -A && git commit -m "..." && git push
+```
 
-1. **GitHub Pages** (chosen): free, HTTPS, public URL, no personal data in the app. The address becomes `https://<user>.github.io/spectrum-dojo/`.
-2. **Tailscale** with `tailscale serve` gives the Mac an HTTPS address that works anywhere, but the Mac must stay on.
-3. **Local HTTPS on the hub** with `mkcert` works offline at home only and needs the certificate trusted on every device.
-4. **Claude Artifact** gives a private link but runs in a sandbox that does not support offline caching.
+GitHub Pages redeploys automatically within about a minute.
 
 Progress is stored per browser. Use **Move progress to another device** in Quiz arena to copy the code from one device and import it on another; imports merge.
 

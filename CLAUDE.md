@@ -47,7 +47,9 @@ Purpose: a personal CWNA exam trainer and general Wi-Fi learning tool for Tobi. 
 
 ## Hosting status
 
-Served on the LAN by the Home Hub over plain HTTP, which is why offline mode (service worker) does not work yet. The agreed next step is GitHub Pages from Tobi's personal account; the exact commands and follow-up checks are in `HANDOFF.md`. Read that section before touching hosting.
+Live at **https://lorbar.github.io/spectrum-dojo/** (GitHub Pages, repo `Lorbar/spectrum-dojo`, public, `main` branch, root path). Service worker verified registered and active there. Also still served on the LAN by the Home Hub over plain HTTP (`/dojo/`, `hub/apps.json`, `public_url` field points the generated `URLS.txt` at the Pages address too) — that copy stays for home use but cannot install offline (no HTTPS).
+
+To publish a change: edit, bump `CACHE` in `sw.js`, `git add -A && git commit -m "..." && git push` from this folder. Pages redeploys in about a minute. `gh` is authenticated to the personal GitHub account (`Lorbar`) on this Mac; `gh auth status` to check.
 
 ## Quick checks
 

@@ -27,11 +27,13 @@ Built 2026-09-27 in one session as a novel CWNA study aid. This file records int
 - Reference: full-width PHYs and data rates table computed from `D.phys`.
 - Rate calc: client throughput matrix (streams × width), device presets, efficiency slider for estimated real throughput.
 
-## Not yet done
+## Done 2026-09-27 (third pass): published on GitHub Pages
 
-- **Offline mode does not work yet, and the cause is known.** Service workers require a secure origin (`https://` or `localhost`). The Home Hub serves the app over plain `http://MindKraftMBP.local:8080/dojo/`, so Safari on iPhone and iPad refuses to register `sw.js`. Tested 2026-09-27: Add to Home Screen works, but tapping the icon while offline shows a blank page. The desktop browser pane showed the same failure as "An unknown error occurred when fetching the script". Nothing in the app is broken; it only needs an HTTPS host. The plan is below.
+Live at `https://lorbar.github.io/spectrum-dojo/`, repo `Lorbar/spectrum-dojo` (public). Service worker confirmed registered and `active: true` there via `navigator.serviceWorker.getRegistrations()`. `README.md` and `CLAUDE.md` updated to point installs at the Pages address; the LAN hub address stays as a secondary, home-only route (`hub/apps.json` now carries a `public_url` field for dojo, surfaced in `URLS.txt`). Not yet re-tested: actual Airplane Mode load on a physical iPhone/iPad after Add to Home Screen (registration being active is a strong signal but is not the same as a hands-on offline check).
 
-## Plan: publish on GitHub Pages (agreed with Tobi, to be done from the Mac mini with the personal Claude and personal GitHub account)
+## Original plan (kept for reference)
+
+- **The problem was:** Service workers require a secure origin (`https://` or `localhost`). The Home Hub served the app over plain `http://MindKraftMBP.local:8080/dojo/`, so Safari on iPhone and iPad refused to register `sw.js`. Add to Home Screen worked, but tapping the icon while offline showed a blank page.
 
 Why GitHub Pages: free, HTTPS, reachable at home and away, and the app holds no personal data (quiz progress stays in each device's browser). Tobi chose this over Tailscale and over local HTTPS on the hub.
 
